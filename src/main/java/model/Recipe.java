@@ -87,7 +87,6 @@ public class Recipe implements BaseEntity {
         return owner;
     }
 
-    @Override
     public long getId() {
         return id_recipe;
     }

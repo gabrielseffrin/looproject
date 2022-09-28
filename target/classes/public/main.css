@@ -1,6 +1,5 @@
 header {
 	text-align: center;
-	margin-top: 5%;
 	margin-bottom: 5%;
 }
 
@@ -10,5 +9,6 @@ header {
 
 #start {
 	margin: auto;
+	margin-top: 15%;
 	text-align: center;
 }

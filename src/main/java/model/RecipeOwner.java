@@ -68,8 +68,8 @@ public class RecipeOwner implements BaseEntity {
 		this.id = id;
 	}
 
-	@Override
 	public long getId() {
 		return id;
 	}
+
 }
