@@ -1,0 +1,14 @@
+header {
+	text-align: center;
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+
+#descricao {
+	text-align: justify;
+}
+
+#start {
+	margin: auto;
+	text-align: center;
+}
