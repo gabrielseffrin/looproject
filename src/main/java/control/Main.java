@@ -2,15 +2,9 @@ package control;
 
 import static spark.Spark.*;
 
-import java.util.HashMap;
-
 import dao.GenericDao;
 import model.Recipe;
 import model.RecipeOwner;
-import spark.ModelAndView;
-import spark.Request;
-import spark.Response;
-import spark.TemplateEngine;
 import spark.template.velocity.VelocityTemplateEngine;
 
 public class Main {
@@ -19,7 +13,11 @@ public class Main {
 		VelocityTemplateEngine engine = new VelocityTemplateEngine();
 		staticFiles.location("/public"); // informando ao velocity sobre o css
 
-		get("/", Main::pageHome, engine);
+		get("/", Common::pageHome, engine);
+		get("/header", Common::header, engine);
+		get("/footer", Common::footer, engine);
+		get("/minMenu", Common::minMenu, engine);
+		get("/recipes/recipes", Common::recipes, engine);
 		/*
 		 * RecipeOwner man = new RecipeOwner();
 		 * Recipe recipe = new Recipe();
@@ -42,10 +40,5 @@ public class Main {
 		 * genericOwner.save(man);
 		 * genericRecipe.save(recipe);
 		 */
-	}
-
-	private static ModelAndView pageHome(Request req, Response res) {
-		HashMap<String, Object> model = new HashMap<>();
-		return new ModelAndView(model, "view/index.vm");
 	}
 }
