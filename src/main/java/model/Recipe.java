@@ -32,6 +32,9 @@ public class Recipe implements BaseEntity {
     @Column(name = "approved")
     private boolean status;
 
+    @Column(name = "public")
+    private boolean isPublic;
+
     @ManyToOne
     private RecipeOwner owner;
 
@@ -77,6 +80,14 @@ public class Recipe implements BaseEntity {
 
     public boolean getStatus() {
         return status;
+    }
+
+    public void setIsPublic(boolean isPublic) {
+        this.isPublic = isPublic;
+    }
+
+    public boolean isPublic() {
+        return isPublic;
     }
 
     public void setOwner(RecipeOwner owner) {

@@ -22,6 +22,13 @@
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet" />
 
+    <style>
+        #form {
+            margin: auto;
+            width: 30em;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -31,42 +38,46 @@
         </div>
 
         <div class="container">
-            <div class="row">
-                <div class="row" id="min-menu"></div>
-            </div>
-            <div class="row">
-                <form method="post" action="/newRecipe">
-                    <div class="mb-3">
-                        <label for="nome-receita" class="form-label">Nome da receita</label>
-                        <input type="text" class="form-control" id="nome-receita"
-                            placeholder="ex: bolo de chocolate da vó">
+            <div id="form">
+                <form action="/newUser" method="post">
+                    <div class="form-outline mb-4">
+                        <input type="text" id="inputName" class="form-control" />
+                        <label class="form-label" for="inputName">User name</label>
                     </div>
 
-                    <!-- input ingredientes -->
-                    <div class="mb-3">
-                        <label for="ingredients" class="form-label">Ingredientes</label>
-                        <textarea class="form-control" id="ingredients" rows="3"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="preparation-mode" class="form-label">Modo de Preparo</label>
-                        <textarea class="form-control" id="preparation-mode" rows="3"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="note" class="form-label">Observações</label>
-                        <textarea class="form-control" id="note" rows="3"></textarea>
+                    <div class="form-outline mb-4">
+                        <input type="email" id="inputEmail" class="form-control" />
+                        <label class="form-label" for="inputEmail">Email address</label>
                     </div>
 
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" value="" id="visibilidadeRecipe">
-                        <label class="form-check-label" for="visibilidadeRecipe">
-                            Tornar pública
-                        </label>
+                    <div class="form-outline mb-4">
+                        <input type="password" id="inputPassword" class="form-control" />
+                        <label class="form-label" for="inputPassword">Password</label>
                     </div>
-                    <button type="submit" class="btn btn-primary mb-3">Cadastrar</button>
+
+                    <div class="row mb-4">
+                        <div class="col d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="inputRememberMe" checked />
+                                <label class="form-check-label" for="inputRememberMe"> Remember me </label>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <a href="#!">Forgot password?</a>
+                        </div>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+                    <div class="text-center">
+                        <p>Not a member? <a href="#!">Register</a></p>
+                    </div>
                 </form>
             </div>
-
         </div>
+
         <div class="container-fluid">
             <div id="footer"></div>
         </div>
@@ -81,4 +92,4 @@
 </script>
 <script src="/util/shared.js"></script>
 
-</html> 
+</html>

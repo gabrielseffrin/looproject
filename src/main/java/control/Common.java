@@ -18,6 +18,11 @@ public class Common {
         return new ModelAndView(model, "view/header.vm");
     }
 
+    public static ModelAndView login(Request req, Response res) {
+        HashMap<String, Object> model = new HashMap<>();
+        return new ModelAndView(model, "view/login/login.vm");
+    }
+
     public static ModelAndView footer(Request req, Response res) {
         HashMap<String, Object> model = new HashMap<>();
         return new ModelAndView(model, "view/footer.vm");

@@ -2,24 +2,23 @@ package control;
 
 import static spark.Spark.*;
 
-import dao.GenericDao;
-import model.Recipe;
-import model.RecipeOwner;
 import spark.template.velocity.VelocityTemplateEngine;
 
 public class Main {
 	public static void main(String[] args) {
 
 		VelocityTemplateEngine engine = new VelocityTemplateEngine();
-		staticFiles.location("/public"); // informando ao velocity sobre o css
+		staticFiles.location("/public");
 
 		get("/", Common::pageHome, engine);
 		get("/header", Common::header, engine);
+		get("/login/login", Common::login, engine);
 		get("/footer", Common::footer, engine);
 		get("/minMenu", Common::minMenu, engine);
 		get("/recipes/recipes", Common::recipes, engine);
 		get("/recipeCreation/recipeCreation", Common::createRecipe, engine);
 		get("/userRecipes/recipeBook", Common::recipeBook, engine);
+
 		/*
 		 * RecipeOwner man = new RecipeOwner();
 		 * Recipe recipe = new Recipe();
