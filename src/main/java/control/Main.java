@@ -18,6 +18,8 @@ public class Main {
 		get("/footer", Common::footer, engine);
 		get("/minMenu", Common::minMenu, engine);
 		get("/recipes/recipes", Common::recipes, engine);
+		get("/recipeCreation/recipeCreation", Common::createRecipe, engine);
+		get("/userRecipes/recipeBook", Common::recipeBook, engine);
 		/*
 		 * RecipeOwner man = new RecipeOwner();
 		 * Recipe recipe = new Recipe();

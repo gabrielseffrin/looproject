@@ -32,4 +32,14 @@ public class Common {
         HashMap<String, Object> model = new HashMap<>();
         return new ModelAndView(model, "view/recipes/recipes.vm");
     }
+
+    public static ModelAndView createRecipe(Request req, Response res) {
+        HashMap<String, Object> model = new HashMap<>();
+        return new ModelAndView(model, "view/recipeCreation/recipeCreation.vm");
+    }
+
+    public static ModelAndView recipeBook(Request req, Response res) {
+        HashMap<String, Object> model = new HashMap<>();
+        return new ModelAndView(model, "view/userRecipes/recipeBook.vm");
+    }
 }
