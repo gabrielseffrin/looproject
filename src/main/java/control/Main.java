@@ -10,15 +10,20 @@ public class Main {
 		VelocityTemplateEngine engine = new VelocityTemplateEngine();
 		staticFiles.location("/public");
 
+		/* links */
 		get("/", Common::pageHome, engine);
 		get("/header", Common::header, engine);
 		get("/login/login", Common::login, engine);
+		get("/register/register", Common::register, engine);
 		get("/footer", Common::footer, engine);
 		get("/minMenu", Common::minMenu, engine);
 		get("/recipes/recipes", Common::recipes, engine);
 		get("/recipeCreation/recipeCreation", Common::createRecipe, engine);
 		get("/userRecipes/recipeBook", Common::recipeBook, engine);
 
+		/* login and register */
+		post("/register", LoginRegister::register);
+		post("/login", LoginRegister::login);
 		/*
 		 * RecipeOwner man = new RecipeOwner();
 		 * Recipe recipe = new Recipe();

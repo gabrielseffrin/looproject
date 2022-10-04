@@ -23,6 +23,11 @@ public class Common {
         return new ModelAndView(model, "view/login/login.vm");
     }
 
+    public static ModelAndView register(Request req, Response res) {
+        HashMap<String, Object> model = new HashMap<>();
+        return new ModelAndView(model, "view/register/userRegister.vm");
+    }
+
     public static ModelAndView footer(Request req, Response res) {
         HashMap<String, Object> model = new HashMap<>();
         return new ModelAndView(model, "view/footer.vm");

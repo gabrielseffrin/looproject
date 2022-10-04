@@ -5,6 +5,10 @@ header {
 	margin-bottom: 5%;
 }
 
+footer {
+	bottom: 0;
+}
+
 #descricao {
 	text-align: justify;
 }
