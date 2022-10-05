@@ -39,7 +39,7 @@ public class GenericDao<T extends BaseEntity> {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			// start the transaction
 			transaction = session.beginTransaction();
-			// save the studendt object
+			// save the object
 			session.saveOrUpdate(obj);
 			// commit the transaction
 			transaction.commit();
@@ -54,7 +54,7 @@ public class GenericDao<T extends BaseEntity> {
 
 	public T getObjectById(T obj, long id) {
 		Class classe = obj.getClass();
-		String className = classe.getSimpleName().toString();
+		// String className = classe.getSimpleName().toString();
 
 		Transaction transaction = null;
 		T retorno = null;
@@ -62,8 +62,31 @@ public class GenericDao<T extends BaseEntity> {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			// start the transaction
 			transaction = session.beginTransaction();
-			// get the studendt object
+			// get the object
 			retorno = (T) session.get(classe, id);
+			// commit the transaction
+			transaction.commit();
+		} catch (Exception e) {
+			if (transaction != null) {
+				transaction.rollback();
+				System.out.println("abriu transaction mas falhou");
+			}
+		}
+		return retorno;
+	}
+
+	public T getObjectByEmail(T obj, String email) {
+		Class classe = obj.getClass();
+		// String className = classe.getSimpleName().toString();
+
+		Transaction transaction = null;
+		T retorno = null;
+		try {
+			Session session = HibernateUtil.getSessionFactory().openSession();
+			// start the transaction
+			transaction = session.beginTransaction();
+			// get the object
+			retorno = (T) session.get(classe, email);
 			// commit the transaction
 			transaction.commit();
 		} catch (Exception e) {
@@ -87,7 +110,7 @@ public class GenericDao<T extends BaseEntity> {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			// start the transaction
 			transaction = session.beginTransaction();
-			// get the studendts
+			// get the objects
 			objects = session.createQuery("from " + className).list();
 
 			transaction.commit();
@@ -105,14 +128,14 @@ public class GenericDao<T extends BaseEntity> {
 	public void delete(T obj) {
 
 		Class classe = obj.getClass();
-		String className = classe.getSimpleName().toString();
+		// String className = classe.getSimpleName().toString();
 
 		Transaction transaction = null;
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			// start the transaction
 			transaction = session.beginTransaction();
-			// delete the student object
+			// delete the object
 			session.delete(obj);
 
 			// commit the transaction

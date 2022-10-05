@@ -7,13 +7,8 @@ import model.RecipeOwner;
 
 public class LoginRegister {
 
-    public static Object login(Request req, Response res) {
-
-        res.redirect("/");
-        return "ok";
-    }
-
     public static Object register(Request req, Response res) {
+
         String name = req.queryParams("inputName");
         String email = req.queryParams("inputEmail");
         String password = req.queryParams("inputPassword");
@@ -23,13 +18,34 @@ public class LoginRegister {
         owner.setName(name);
         owner.setPassword(password);
 
-        GenericDao<RecipeOwner> dao = new GenericDao<>();
+        GenericDao<RecipeOwner> gDaoOwner = new GenericDao<>();
 
         try {
-            dao.save(owner);
+            gDaoOwner.save(owner);
         } catch (Exception e) {
             System.out.println("deu craps");
             return "internal server error craps";
+        }
+
+        res.redirect("/");
+        return "ok";
+    }
+
+    public static Object login(Request req, Response res) {
+
+        String email = req.queryParams("inputEmail");
+        String password = req.queryParams("inputPassword");
+
+        RecipeOwner owner = new RecipeOwner();
+        GenericDao<RecipeOwner> gDaoOwner = new GenericDao<>();
+
+        try {
+            owner = gDaoOwner.getObjectByEmail(owner, email);
+
+            if (!(owner.getEmail().equals(email) && owner.getPassword().equals(password)))
+                return "senha ou email incorretos";
+        } catch (Exception e) {
+            System.out.println("senha ou email incorretos");
         }
 
         res.redirect("/");
