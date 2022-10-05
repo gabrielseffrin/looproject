@@ -5,7 +5,10 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import org.hibernate.query.Query;
+
 import model.BaseEntity;
+import model.RecipeOwner;
 import util.HibernateUtil;
 
 public class GenericDao<T extends BaseEntity> {
@@ -75,27 +78,19 @@ public class GenericDao<T extends BaseEntity> {
 		return retorno;
 	}
 
-	public T getObjectByEmail(T obj, String email) {
-		Class classe = obj.getClass();
-		// String className = classe.getSimpleName().toString();
-
-		Transaction transaction = null;
-		T retorno = null;
+	public RecipeOwner getObjectByEmailAndPassword(String email, String password) {
+		email = "gabrielseffrin29@gmail.com";
+		password = "123";
 		try {
-			Session session = HibernateUtil.getSessionFactory().openSession();
-			// start the transaction
-			transaction = session.beginTransaction();
-			// get the object
-			retorno = (T) session.get(classe, email);
-			// commit the transaction
-			transaction.commit();
+			Session manager = HibernateUtil.getSessionFactory().openSession();
+			RecipeOwner doBanco = (RecipeOwner) manager
+					.createQuery("from recipeOwner where email = " + email + " and password = " + password);
+
+			System.out.println("resultado" + doBanco);
+			return doBanco;
 		} catch (Exception e) {
-			if (transaction != null) {
-				transaction.rollback();
-				System.out.println("abriu transaction mas falhou");
-			}
+			return null;
 		}
-		return retorno;
 	}
 
 	// Lista todos os registros

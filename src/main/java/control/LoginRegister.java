@@ -36,14 +36,15 @@ public class LoginRegister {
         String email = req.queryParams("inputEmail");
         String password = req.queryParams("inputPassword");
 
-        RecipeOwner owner = new RecipeOwner();
         GenericDao<RecipeOwner> gDaoOwner = new GenericDao<>();
 
         try {
-            owner = gDaoOwner.getObjectByEmail(owner, email);
 
-            if (!(owner.getEmail().equals(email) && owner.getPassword().equals(password)))
-                return "senha ou email incorretos";
+            Object ownere = gDaoOwner.getObjectByEmailAndPassword(email, password);
+            System.out.println("aaa " + ownere);
+            if (ownere == null) {
+                System.out.println(ownere);
+            }
         } catch (Exception e) {
             System.out.println("senha ou email incorretos");
         }
