@@ -37,10 +37,11 @@ public class LoginRegister {
         String password = req.queryParams("inputPassword");
 
         GenericDao<RecipeOwner> gDaoOwner = new GenericDao<>();
+        RecipeOwner owner = new RecipeOwner();
 
         try {
 
-            Object ownere = gDaoOwner.getObjectByEmailAndPassword(email, password);
+            Object ownere = gDaoOwner.getObjectByEmailAndPassword(owner, email, password);
             System.out.println("aaa " + ownere);
             if (ownere == null) {
                 System.out.println(ownere);

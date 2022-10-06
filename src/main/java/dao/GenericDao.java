@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import model.BaseEntity;
+import model.Recipe;
 import model.RecipeOwner;
 import util.HibernateUtil;
 
@@ -56,7 +57,7 @@ public class GenericDao<T extends BaseEntity> {
 	}
 
 	public T getObjectById(T obj, long id) {
-		Class classe = obj.getClass();
+		Class<? extends BaseEntity> classe = obj.getClass();
 		// String className = classe.getSimpleName().toString();
 
 		Transaction transaction = null;
@@ -78,25 +79,40 @@ public class GenericDao<T extends BaseEntity> {
 		return retorno;
 	}
 
-	public RecipeOwner getObjectByEmailAndPassword(String email, String password) {
-		email = "gabrielseffrin29@gmail.com";
-		password = "123";
-		try {
-			Session manager = HibernateUtil.getSessionFactory().openSession();
-			RecipeOwner doBanco = (RecipeOwner) manager
-					.createQuery("from recipeOwner where email = " + email + " and password = " + password);
+	public Object getObjectByEmailAndPassword(RecipeOwner obj, String email, String password) {
+		Class<? extends BaseEntity> classe = obj.getClass();
 
-			System.out.println("resultado" + doBanco);
-			return doBanco;
+		Transaction transaction = null;
+
+		try {
+			Session session = HibernateUtil.getSessionFactory().openSession();
+
+			transaction = session.beginTransaction();
+
+			// Query query =
+			/*
+			 * List list = session
+			 * .createQuery("from recipeOwner where password = " + password,
+			 * classe).getResultList();
+			 */
+
+			List<Recipe> result = session.createQuery("from recipeOwner " + password, Recipe.class).getResultList();
+
+			System.out.println(result);
+
+			transaction.commit();
+			return result;
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			return null;
 		}
+
 	}
 
 	// Lista todos os registros
 	public List<T> listAll(T obj) {
 
-		Class classe = obj.getClass();
+		Class<? extends BaseEntity> classe = obj.getClass();
 		String className = classe.getSimpleName().toString();
 
 		Transaction transaction = null;
@@ -121,9 +137,6 @@ public class GenericDao<T extends BaseEntity> {
 	}
 
 	public void delete(T obj) {
-
-		Class classe = obj.getClass();
-		// String className = classe.getSimpleName().toString();
 
 		Transaction transaction = null;
 		try {

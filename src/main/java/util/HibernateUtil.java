@@ -21,6 +21,7 @@ public class HibernateUtil {
 				Configuration configuration = new Configuration();
 				// equivalente ao hibernate.cfg.xml
 				Properties settings = new Properties();
+
 				settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
 				settings.put(Environment.URL, "jdbc:mysql://localhost:3306/projectLoo");
 				settings.put(Environment.USER, "covid");
@@ -34,6 +35,8 @@ public class HibernateUtil {
 				configuration.setProperties(settings);
 				configuration.addAnnotatedClass(Recipe.class);
 				configuration.addAnnotatedClass(RecipeOwner.class);
+				// configuration.addClass();
+				// configuration.addClass(RecipeOwner.class);
 
 				ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 						.applySettings(configuration.getProperties()).build();
