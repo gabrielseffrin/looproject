@@ -2,8 +2,8 @@ package control;
 
 import java.util.HashMap;
 
-import javax.imageio.ImageIO;
-
+import dao.GenericDao;
+import model.Recipe;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -42,6 +42,9 @@ public class Common {
 
     public static ModelAndView recipes(Request req, Response res) {
         HashMap<String, Object> model = new HashMap<>();
+        GenericDao<Recipe> gRecipe = new GenericDao<>();
+        Recipe recipe = new Recipe();
+        model.put("allrecipes", gRecipe.listAll(recipe));
         return new ModelAndView(model, "view/recipes/recipes.vm");
     }
 

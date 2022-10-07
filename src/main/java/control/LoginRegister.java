@@ -4,6 +4,7 @@ import spark.Request;
 import spark.Response;
 
 import dao.GenericDao;
+import dao.GenericRecipeOwner;
 import model.RecipeOwner;
 
 public class LoginRegister {
@@ -37,7 +38,7 @@ public class LoginRegister {
         String email = req.queryParams("inputEmail");
         String password = req.queryParams("inputPassword");
 
-        GenericDao<RecipeOwner> gDaoOwner = new GenericDao<>();
+        GenericRecipeOwner gDaoOwner = new GenericRecipeOwner();
         RecipeOwner owner = new RecipeOwner();
 
         try {
