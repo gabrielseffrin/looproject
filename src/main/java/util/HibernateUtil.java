@@ -30,13 +30,11 @@ public class HibernateUtil {
 
 				settings.put(Environment.SHOW_SQL, "true");
 				settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
-				// settings.put(Environment.HBM2DDL_AUTO, "create-drop");
+				settings.put(Environment.HBM2DDL_AUTO, "create-drop");
 
 				configuration.setProperties(settings);
 				configuration.addAnnotatedClass(Recipe.class);
 				configuration.addAnnotatedClass(RecipeOwner.class);
-				// configuration.addClass();
-				// configuration.addClass(RecipeOwner.class);
 
 				ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 						.applySettings(configuration.getProperties()).build();

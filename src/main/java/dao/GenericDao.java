@@ -79,34 +79,32 @@ public class GenericDao<T extends BaseEntity> {
 		return retorno;
 	}
 
-	public Object getObjectByEmailAndPassword(RecipeOwner obj, String email, String password) {
-		Class<? extends BaseEntity> classe = obj.getClass();
+	public RecipeOwner getObjectByEmailAndPassword(RecipeOwner obj, String email, String condition) {
+
+		Class classe = obj.getClass();
+		String className = classe.getSimpleName().toString();
 
 		Transaction transaction = null;
-
+		RecipeOwner objects = null;
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
-
+			// start the transaction
 			transaction = session.beginTransaction();
-
-			// Query query =
-			/*
-			 * List list = session
-			 * .createQuery("from recipeOwner where password = " + password,
-			 * classe).getResultList();
-			 */
-
-			List<Recipe> result = session.createQuery("from recipeOwner " + password, Recipe.class).getResultList();
-
-			System.out.println(result);
-
+			// get the students
+			String hql = "from " + className + " where password = :condition and email = :conditionTwo";
+			Query q = session.createQuery(hql);
+			q.setParameter("condition", condition);
+			q.setParameter("conditionTwo", email);
+			objects = (RecipeOwner) q.uniqueResult();
 			transaction.commit();
-			return result;
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			return null;
+			if (transaction != null) {
+				transaction.rollback();
+				System.out.println("ListALL - abriu transaction mas falhou");
+			}
 		}
 
+		return objects;
 	}
 
 	// Lista todos os registros

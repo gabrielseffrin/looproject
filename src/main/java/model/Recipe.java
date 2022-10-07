@@ -17,6 +17,9 @@ public class Recipe implements BaseEntity {
     @Column(name = "id_recipe")
     private int id_recipe;
 
+    @Column(name = "nameRecipe")
+    private String nameRecipe;
+
     @Column(name = "ingredients")
     private String ingredients;
 
@@ -27,7 +30,7 @@ public class Recipe implements BaseEntity {
     private String note;
 
     @Column(name = "category")
-    private char category;
+    private String category;
 
     @Column(name = "approved")
     private boolean status;
@@ -38,11 +41,19 @@ public class Recipe implements BaseEntity {
     @ManyToOne
     private RecipeOwner owner;
 
-    public void setCategory(char category) {
+    public void setNameRecipe(String nameRecipe) {
+        this.nameRecipe = nameRecipe;
+    }
+
+    public String getNameRecipe() {
+        return nameRecipe;
+    }
+
+    public void setCategory(String category) {
         this.category = category;
     }
 
-    public char getCategory() {
+    public String getCategory() {
         return category;
     }
 

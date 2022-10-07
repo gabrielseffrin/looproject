@@ -26,7 +26,7 @@ public class Routes {
         post("/login", LoginRegister::login);
 
         /* create recipe */
-        post(null, null);
+        post("/newRecipe", CreateRecipe::createRecipe);
 
     }
 }

@@ -38,26 +38,26 @@
                 <form method="post" action="/newRecipe">
                     <div class="mb-3">
                         <label for="nome-receita" class="form-label">Nome da receita</label>
-                        <input type="text" class="form-control" id="nome-receita"
+                        <input type="text" name="inpuNameRecipe" class="form-control" id="nome-receita"
                             placeholder="ex: bolo de chocolate da vó">
                     </div>
 
                     <!-- input ingredientes -->
                     <div class="mb-3">
                         <label for="ingredients" class="form-label">Ingredientes</label>
-                        <textarea class="form-control" id="ingredients" rows="3"></textarea>
+                        <textarea class="form-control" name="inputIngredients" id="ingredients" rows="3"></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="preparation-mode" class="form-label">Modo de Preparo</label>
-                        <textarea class="form-control" id="preparation-mode" rows="3"></textarea>
+                        <textarea class="form-control" name="inputPrapararionMode" id="preparation-mode" rows="3"></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="note" class="form-label">Observações</label>
-                        <textarea class="form-control" id="note" rows="3"></textarea>
+                        <textarea class="form-control" name="inputNote" id="note" rows="3"></textarea>
                     </div>
 
                     <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" value="" id="visibilidadeRecipe">
+                        <input class="form-check-input" name="inputIsPublic" type="checkbox" value="" id="visibilidadeRecipe">
                         <label class="form-check-label" for="visibilidadeRecipe">
                             Tornar pública
                         </label>

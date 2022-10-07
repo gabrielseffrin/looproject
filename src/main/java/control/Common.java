@@ -2,6 +2,8 @@ package control;
 
 import java.util.HashMap;
 
+import javax.imageio.ImageIO;
+
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
