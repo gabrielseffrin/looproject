@@ -2,6 +2,7 @@ package control;
 
 import spark.Request;
 import spark.Response;
+
 import dao.GenericDao;
 import model.RecipeOwner;
 
@@ -40,12 +41,9 @@ public class LoginRegister {
         RecipeOwner owner = new RecipeOwner();
 
         try {
-
-            Object ownere = gDaoOwner.getObjectByEmailAndPassword(owner, email, password);
-            System.out.println("aaa " + ownere);
-            if (ownere == null) {
-                System.out.println(ownere);
-            }
+            RecipeOwner obj;
+            obj = gDaoOwner.getObjectByEmailAndPassword(owner, email, password);
+            System.out.println(obj.getEmail());
         } catch (Exception e) {
             System.out.println("senha ou email incorretos");
         }
