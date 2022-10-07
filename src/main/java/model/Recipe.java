@@ -15,7 +15,7 @@ public class Recipe implements BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_recipe")
-    private int id_recipe;
+    private long id_recipe;
 
     @Column(name = "nameRecipe")
     private String nameRecipe;
