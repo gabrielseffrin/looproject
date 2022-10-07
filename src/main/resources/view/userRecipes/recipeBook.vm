@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,6 @@
     <title>Minha Receita</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
 
     <!-- css -->
     <link rel="stylesheet" href="/style/main.css">
@@ -35,26 +34,27 @@
                 <div class="row" id="min-menu"></div>
             </div>
 
-            <div class="row">
-                <div class="row row-cols-12 row-cols-md-2 g-4">
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                
+                #foreach($recipe in $allrecipes)
+
                     <div class="col">
-                        <div class="card">
-                            <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top"
-                                alt="Hollywood Sign on The Hill" />
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">
-                                    This is a longer card with supporting text below as a natural lead-in to
-                                    additional content. This content is a little bit longer.
-                                </p>
+                        <a href="/recipe/$recipe.getId()">
+                            <div class="card">
+                                <img src="https://i.imgur.com/h7WUdvz.jpeg" class="card-img-top"
+                                    alt="Hollywood Sign on The Hill" />
+                                <div class="card-body">
+                                    <h5 class="card-title">$recipe.getNameRecipe()</h5>
+                                    <p class="card-text">
+                                        $recipe.getIngredients().
+                                    </p>
+                                </div>
                             </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Last updated 3 mins ago</small>
-                            </div>
-                        </div>
+                        </a>
                     </div>
 
-                </div>
+                #end
+
             </div>
         </div>
         <div class="container-fluid">

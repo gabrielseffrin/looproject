@@ -28,7 +28,7 @@ public class CreateRecipe {
             recipe.setNote(note);
             recipe.setIsPublic(isPublic);
             recipe.setStatus(status);
-            recipe.setOwner(gDaoOwner.getObjectById(owner, 1));
+            recipe.setOwner(gDaoOwner.getObjectById(owner, 9));
 
             GenericDao<Recipe> gDaoRecipe = new GenericDao<>();
             gDaoRecipe.save(recipe);

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
 import dao.GenericDao;
-import dao.GenericRecipeOwner;
+import dao.DaoRecipeOwner;
 import model.RecipeOwner;
 
 public class LoginRegister {
@@ -42,7 +42,7 @@ public class LoginRegister {
         String email = req.queryParams("inputEmail");
         String password = req.queryParams("inputPassword");
 
-        GenericRecipeOwner gDaoOwner = new GenericRecipeOwner();
+        DaoRecipeOwner gDaoOwner = new DaoRecipeOwner();
         RecipeOwner owner = new RecipeOwner();
 
         try {

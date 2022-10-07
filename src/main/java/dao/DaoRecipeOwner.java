@@ -8,7 +8,7 @@ import org.hibernate.query.Query;
 import model.RecipeOwner;
 import util.HibernateUtil;
 
-public class GenericRecipeOwner extends GenericDao<RecipeOwner> {
+public class DaoRecipeOwner extends GenericDao<RecipeOwner> {
 
     public RecipeOwner getObjectByEmailAndPassword(RecipeOwner obj, String email, String condition) {
 

@@ -2,6 +2,8 @@ package control;
 
 import java.util.HashMap;
 
+import antlr.collections.List;
+import dao.DaoRecipe;
 import dao.GenericDao;
 import model.Recipe;
 import spark.ModelAndView;
@@ -42,9 +44,9 @@ public class Common {
 
     public static ModelAndView recipes(Request req, Response res) {
         HashMap<String, Object> model = new HashMap<>();
-        GenericDao<Recipe> gRecipe = new GenericDao<>();
+        DaoRecipe gRecipe = new DaoRecipe();
         Recipe recipe = new Recipe();
-        model.put("allrecipes", gRecipe.listAll(recipe));
+        model.put("allrecipes", gRecipe.listRecipesPublic(recipe));
         return new ModelAndView(model, "view/recipes/recipes.vm");
     }
 
@@ -55,6 +57,9 @@ public class Common {
 
     public static ModelAndView recipeBook(Request req, Response res) {
         HashMap<String, Object> model = new HashMap<>();
+        DaoRecipe gRecipe = new DaoRecipe();
+        Recipe recipe = new Recipe();
+        model.put("allrecipes", gRecipe.getElementsByIdRecipeOwner(recipe, 1));
         return new ModelAndView(model, "view/userRecipes/recipeBook.vm");
     }
 }
