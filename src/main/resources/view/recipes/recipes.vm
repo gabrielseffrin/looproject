@@ -50,13 +50,13 @@
                                 </p>
                             </div>
                             <div class="card-footer">
-                                <small class="text-muted">Write by: $recipe.getOwner().getName()</small>
+                                <small class="text-muted">Writen by: $recipe.getOwner().getName()</small>
                             </div>
                         </div>
                     </div>
 
                 #end
-                
+
             </div>
         </div>
         <div class="container-fluid">
