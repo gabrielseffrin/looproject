@@ -37,7 +37,7 @@ public class CreateRecipe {
             System.out.println(e.getMessage());
         }
 
+        res.redirect("/recipes/recipes");
         return "ok";
-
     }
 }
