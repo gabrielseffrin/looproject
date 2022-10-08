@@ -1,5 +1,5 @@
 package model;
 
 public enum Category {
-    SOBREMESA, PADARIA, CONFEITARIA,
+    SOBREMESA, PADARIA, CONFEITARIA
 }

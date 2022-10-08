@@ -12,12 +12,13 @@ public class CreateRecipe {
 
         try {
 
-            String nameRecipe = req.queryParams("inpuNameRecipe");
+            String nameRecipe = req.queryParams("inputNameRecipe");
             String ingredients = req.queryParams("inputIngredients");
             String preparationMode = req.queryParams("inputPrapararionMode");
             String note = req.queryParams("inputNote");
+            String catogory = req.queryParams("inputCategory");
             boolean isPublic = Boolean.parseBoolean(req.queryParams("inputIsPublic"));
-            System.out.println(isPublic);
+            System.out.println(catogory);
             System.out.println(isPublic);
             System.out.println(isPublic);
             System.out.println(isPublic);
@@ -30,6 +31,7 @@ public class CreateRecipe {
             recipe.setIngredients(ingredients);
             recipe.setPreparationMode(preparationMode);
             recipe.setNote(note);
+            recipe.setCategory(catogory);
             recipe.setIsPublic(isPublic);
             recipe.setStatus(status);
             recipe.setOwner(gDaoOwner.getObjectById(owner, 9));

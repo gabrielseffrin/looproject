@@ -5,6 +5,7 @@ import java.util.HashMap;
 import antlr.collections.List;
 import dao.DaoRecipe;
 import dao.GenericDao;
+import model.Category;
 import model.Recipe;
 import spark.ModelAndView;
 import spark.Request;
@@ -52,6 +53,7 @@ public class Common {
 
     public static ModelAndView createRecipe(Request req, Response res) {
         HashMap<String, Object> model = new HashMap<>();
+        model.put("categorys", Category.values());
         return new ModelAndView(model, "view/recipeCreation/recipeCreation.vm");
     }
 

@@ -72,6 +72,9 @@
                                 $recipe.getNote()
                             </p>
                         </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Category: $recipe.getCategory()</small>
+                        </div>
                     </div>
                 </div>
 
