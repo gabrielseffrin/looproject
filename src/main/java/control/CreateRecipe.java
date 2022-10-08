@@ -17,6 +17,10 @@ public class CreateRecipe {
             String preparationMode = req.queryParams("inputPrapararionMode");
             String note = req.queryParams("inputNote");
             boolean isPublic = Boolean.parseBoolean(req.queryParams("inputIsPublic"));
+            System.out.println(isPublic);
+            System.out.println(isPublic);
+            System.out.println(isPublic);
+            System.out.println(isPublic);
             boolean status = true;
 
             Recipe recipe = new Recipe();
