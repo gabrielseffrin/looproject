@@ -47,7 +47,7 @@ public class Common {
         HashMap<String, Object> model = new HashMap<>();
         DaoRecipe gRecipe = new DaoRecipe();
         Recipe recipe = new Recipe();
-        model.put("allrecipes", gRecipe.listRecipesPublic(recipe));
+        model.put("allrecipes", gRecipe.listRecipesPublicAndApproved(recipe));
         return new ModelAndView(model, "view/recipes/recipes.vm");
     }
 

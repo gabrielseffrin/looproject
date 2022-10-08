@@ -42,7 +42,7 @@ public class DaoRecipe extends GenericDao<Recipe> {
         return objects;
     }
 
-    public ArrayList<Recipe> listRecipesPublic(Recipe obj) {
+    public ArrayList<Recipe> listRecipesPublicAndApproved(Recipe obj) {
 
         Class<? extends BaseEntity> classe = obj.getClass();
         String className = classe.getSimpleName().toString();
@@ -59,7 +59,7 @@ public class DaoRecipe extends GenericDao<Recipe> {
             auxList = session.createQuery("from " + className).list();
 
             for (Recipe recipe : auxList) {
-                if (recipe.isPublic()) {
+                if (recipe.isPublic() && recipe.getStatus()) {
                     objects.add(recipe);
                 }
             }
