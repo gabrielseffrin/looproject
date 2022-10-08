@@ -56,6 +56,32 @@ public class GenericDao<T extends BaseEntity> {
 		}
 	}
 
+	public List<T> search(T obj, String condition) {
+		Class classe = obj.getClass();
+		String className = classe.getSimpleName().toString();
+
+		Transaction transaction = null;
+		List<T> objects = null;
+
+		try {
+			Session session = HibernateUtil.getSessionFactory().openSession();
+			transaction = session.beginTransaction();
+
+			String hql = "from " + className + " where nameRecipe like :condition or category like :condition";
+			Query q = session.createQuery(hql);
+			q.setParameter("condition", "%" + condition + "%");
+
+			objects = q.list();
+			transaction.commit();
+		} catch (Exception e) {
+			transaction.rollback();
+			System.out.println("Search - falhou");
+			System.out.println(e.getMessage());
+		}
+
+		return objects;
+	}
+
 	public T getObjectById(T obj, long id) {
 		Class<? extends BaseEntity> classe = obj.getClass();
 		// String className = classe.getSimpleName().toString();

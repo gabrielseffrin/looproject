@@ -21,6 +21,9 @@ public class Routes {
         get("/recipeCreation/recipeCreation", Common::createRecipe, engine);
         get("/userRecipes/recipeBook", Common::recipeBook, engine);
 
+        /* search */
+        post("/search", SearchRecipe::search, engine);
+
         /* recipe detail */
         get("/recipe/:id", RecipeDetail::recipeDetail, engine);
 
