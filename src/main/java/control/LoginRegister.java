@@ -3,9 +3,9 @@ package control;
 import spark.Request;
 import spark.Response;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
+import javax.servlet.http.HttpSession;
 
 import dao.GenericDao;
 import dao.DaoRecipeOwner;

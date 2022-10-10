@@ -9,6 +9,10 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+    <!-- icon -->
+    <link rel="icon" type="image/png" href="https://i.imgur.com/opKsVKn.png" />
+
+
     <!-- css -->
     <link rel="stylesheet" href="/style/main.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
