@@ -9,41 +9,45 @@ import spark.Response;
 public class CreateRecipe {
 
     public static Object createRecipe(Request req, Response res) {
+        SessionControl session = SessionControl.getInstance();
 
-        try {
+        if (session.getUser() != null) {
 
-            String nameRecipe = req.queryParams("inputNameRecipe");
-            String ingredients = req.queryParams("inputIngredients");
-            String preparationMode = req.queryParams("inputPrapararionMode");
-            String note = req.queryParams("inputNote");
-            String catogory = req.queryParams("inputCategory");
-            boolean isPublic = Boolean.parseBoolean(req.queryParams("inputIsPublic"));
-            System.out.println(catogory);
-            System.out.println(isPublic);
-            System.out.println(isPublic);
-            System.out.println(isPublic);
-            boolean status = true;
+            try {
 
-            Recipe recipe = new Recipe();
-            RecipeOwner owner = new RecipeOwner();
-            GenericDao<RecipeOwner> gDaoOwner = new GenericDao<>();
-            recipe.setNameRecipe(nameRecipe);
-            recipe.setIngredients(ingredients);
-            recipe.setPreparationMode(preparationMode);
-            recipe.setNote(note);
-            recipe.setCategory(catogory);
-            recipe.setIsPublic(isPublic);
-            recipe.setStatus(status);
-            recipe.setOwner(gDaoOwner.getObjectById(owner, 9));
+                String nameRecipe = req.queryParams("inputNameRecipe");
+                String ingredients = req.queryParams("inputIngredients");
+                String preparationMode = req.queryParams("inputPrapararionMode");
+                String note = req.queryParams("inputNote");
+                String catogory = req.queryParams("inputCategory");
+                boolean isPublic = Boolean.parseBoolean(req.queryParams("inputIsPublic"));
+                boolean status = true;
 
-            GenericDao<Recipe> gDaoRecipe = new GenericDao<>();
-            gDaoRecipe.save(recipe);
+                Recipe recipe = new Recipe();
+                recipe.setNameRecipe(nameRecipe);
+                recipe.setIngredients(ingredients);
+                recipe.setPreparationMode(preparationMode);
+                recipe.setNote(note);
+                recipe.setCategory(catogory);
+                recipe.setIsPublic(isPublic);
+                recipe.setStatus(status);
 
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+                System.out.println(session.getUser());
+                recipe.setOwner(session.getUser());
+
+                GenericDao<Recipe> gDaoRecipe = new GenericDao<>();
+                gDaoRecipe.save(recipe);
+
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+
+            res.redirect("/recipes/recipes");
+            return "ok";
         }
 
-        res.redirect("/recipes/recipes");
-        return "ok";
+        res.redirect("/login/login");
+        return "fail";
+
     }
 }

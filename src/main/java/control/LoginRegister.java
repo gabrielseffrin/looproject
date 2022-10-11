@@ -3,10 +3,6 @@ package control;
 import spark.Request;
 import spark.Response;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
-import javax.servlet.http.HttpSession;
-
 import dao.GenericDao;
 import dao.DaoRecipeOwner;
 import model.RecipeOwner;
@@ -44,11 +40,13 @@ public class LoginRegister {
 
         DaoRecipeOwner gDaoOwner = new DaoRecipeOwner();
         RecipeOwner owner = new RecipeOwner();
-
         try {
             RecipeOwner obj;
             obj = gDaoOwner.getObjectByEmailAndPassword(owner, email, password);
-            System.out.println(obj.getEmail());
+            SessionControl session = SessionControl.getInstance();
+            session.setUser(obj);
+
+            System.out.println(session.getUser().getEmail());
         } catch (Exception e) {
             System.out.println("senha ou email incorretos");
         }

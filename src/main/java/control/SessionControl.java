@@ -1,22 +1,32 @@
 package control;
 
-import java.io.IOException;
+import model.RecipeOwner;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+public class SessionControl {
 
-public class SessionControl extends HttpServlet {
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    private static SessionControl instance;
+    public RecipeOwner user;
 
-        // Etapa 1: Obter o objeto Session
+    private SessionControl() {
+    }
 
-        boolean create = true;
-        HttpSession session = request.getSession(create);
+    public void setUser(RecipeOwner user) {
+        this.user = user;
+    }
 
-        System.out.println(session);
+    public RecipeOwner getUser() {
+        return user;
+    }
+
+    public static SessionControl getInstance() {
+        if (instance == null) {
+            synchronized (SessionControl.class) {
+                if (instance == null) {
+                    instance = new SessionControl();
+                }
+            }
+        }
+
+        return instance;
     }
 }

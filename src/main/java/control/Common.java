@@ -2,9 +2,7 @@ package control;
 
 import java.util.HashMap;
 
-import antlr.collections.List;
 import dao.DaoRecipe;
-import dao.GenericDao;
 import model.Category;
 import model.Recipe;
 import spark.ModelAndView;
@@ -12,6 +10,8 @@ import spark.Request;
 import spark.Response;
 
 public class Common {
+
+    private static SessionControl session = SessionControl.getInstance();
 
     public static ModelAndView pageHome(Request req, Response res) {
         HashMap<String, Object> model = new HashMap<>();
@@ -53,15 +53,26 @@ public class Common {
 
     public static ModelAndView createRecipe(Request req, Response res) {
         HashMap<String, Object> model = new HashMap<>();
-        model.put("categorys", Category.values());
-        return new ModelAndView(model, "view/recipeCreation/recipeCreation.vm");
+
+        if (session.getUser() != null) {
+            model.put("categorys", Category.values());
+            return new ModelAndView(model, "view/recipeCreation/recipeCreation.vm");
+        }
+
+        return new ModelAndView(model, "view/login/login.vm");
     }
 
     public static ModelAndView recipeBook(Request req, Response res) {
         HashMap<String, Object> model = new HashMap<>();
-        DaoRecipe gRecipe = new DaoRecipe();
-        Recipe recipe = new Recipe();
-        model.put("allrecipes", gRecipe.getElementsByIdRecipeOwner(recipe, 1));
-        return new ModelAndView(model, "view/userRecipes/recipeBook.vm");
+
+        if (session.getUser() != null) {
+
+            DaoRecipe gRecipe = new DaoRecipe();
+            Recipe recipe = new Recipe();
+            model.put("allrecipes", gRecipe.getElementsByIdRecipeOwner(recipe, session.getUser().getId()));
+            return new ModelAndView(model, "view/userRecipes/recipeBook.vm");
+        }
+
+        return new ModelAndView(model, "view/login/login.vm");
     }
 }
