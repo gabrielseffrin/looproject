@@ -58,7 +58,7 @@
                                 <strong>
                                     <h6>Ingredientes: <br></h6>
                                 </strong>
-                                $recipe.getIngredients()
+                                $ingredients
                             </p>
                             <hr>
                             <p class="card-text">
