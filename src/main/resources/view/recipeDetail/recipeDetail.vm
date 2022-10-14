@@ -58,21 +58,21 @@
                                 <strong>
                                     <h6>Ingredientes: <br></h6>
                                 </strong>
-                                $ingredients
+                                $dataRecipe.get(0)
                             </p>
                             <hr>
                             <p class="card-text">
                                 <strong>
                                     <h6>Mode de preparo: <br></h6>
                                 </strong> 
-                                $recipe.getPreparationMode()
+                                $dataRecipe.get(1)
                             </p>
                             <hr>
                             <p class="card-text">
                                 <strong>
                                     <h6>Notas: <br></h6>
                                 </strong> 
-                                $recipe.getNote()
+                                $dataRecipe.get(2)
                             </p>
                         </div>
                         <div class="card-footer">
