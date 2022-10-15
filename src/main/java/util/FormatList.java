@@ -3,8 +3,6 @@ package util;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import model.Recipe;
-
 public class FormatList {
 
     public static String formatList(String str) {

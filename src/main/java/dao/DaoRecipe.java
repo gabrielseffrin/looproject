@@ -10,7 +10,6 @@ import org.hibernate.query.Query;
 
 import model.BaseEntity;
 import model.Recipe;
-import model.RecipeOwner;
 import util.HibernateUtil;
 
 public class DaoRecipe extends GenericDao<Recipe> {

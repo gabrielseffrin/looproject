@@ -34,6 +34,13 @@ public class RecipeDetail {
             System.out.println("erro no banco");
         }
 
+        if (SessionControl.getInstance().getUser().getId() == recipe.getOwner().getId())
+            model.put("edit",
+                    "<a class='btn btn-danger text-white' style='background-color: #dd4b39;' href='#!' role='button'>" +
+                            "<i class='far fa-edit'></i></a>");
+        else
+            model.put("edit", "");
+
         model.put("dataRecipe", dataRecipe);
         model.put("recipe", recipe);
         return new ModelAndView(model, "view/recipeDetail/recipeDetail.vm");

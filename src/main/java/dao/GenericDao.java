@@ -8,8 +8,6 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import model.BaseEntity;
-import model.Recipe;
-import model.RecipeOwner;
 import util.HibernateUtil;
 
 public class GenericDao<T extends BaseEntity> {
